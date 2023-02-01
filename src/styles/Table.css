@@ -1,5 +1,5 @@
 table {
-    background: rgb(49, 48, 75);
+    background: #5e3c7e;
     color: white;
     display: table;
     margin-top: 50px;
@@ -16,6 +16,10 @@ table tbody tr {
     border-color: inherit;
     display: table-row;
     vertical-align: inherit;
+}
+
+table tbody tr:nth-child(even) {
+    background-color: #6a4f84;
 }
 
 table tbody td , th {
