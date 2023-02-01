@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import LabeledInput from './labeledInput';
+import LabeledInput from './LabeledInput';
 
 function Form () {
 	
