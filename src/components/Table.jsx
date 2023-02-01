@@ -1,6 +1,16 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 
-function Table() {
+function Table(props) {
+
+  const { patients, filter } = props;
+
+  const [ filteredPatients, setFilteredPatients ] = useState([]);
+
+  useEffect(() => {
+    const filtered = applyFilterOnPatients(filter, patients);
+    setFilteredPatients(filtered);
+  }, [filter, patients]);
+
   return (
     <table>
       <tbody>
