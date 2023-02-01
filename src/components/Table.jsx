@@ -4,7 +4,7 @@ import '../styles/Table.css';
 
 function Table(props) {
 
-  const { patients, filter } = props;
+  const { patients, filter, handleEdit } = props;
 
   const [ filteredPatients, setFilteredPatients ] = useState([]);
 
@@ -36,6 +36,14 @@ function Table(props) {
             <td>{patient.gender}</td>
             <td>{patient.address || "Não informado"}</td>
             <td>{patient.status}</td>
+            <td>
+              <button
+                className='edit_btn_table'
+                onClick={() => handleEdit(patient)}
+              >
+                Editar
+              </button>
+            </td>
           </tr>
         )))}
       </tbody>

@@ -1,10 +1,13 @@
 import { useEffect, useState } from 'react';
+
 import Form from './components/Form';
 import Overlayer from './components/Overlayer';
 import Table from './components/Table';
+
 import {
   getDataFromLocalStorage,
-  addDataInLocalStorage
+  addDataInLocalStorage,
+  editDataInLocalStorage
 } from './utils/localStorageActions';
 import { isCpfNotRegistered } from './utils/userRegisterDataValidation';
 
@@ -12,6 +15,8 @@ function App() {
   const [ filter, setFilter ] = useState([]);
   const [ patients, setPatients ] = useState([]);
   const [ isFormVisible, setIsFormVisible ] = useState(false);
+  const [ isInEditMode, setIsInEditMode ] = useState(false);
+  const [ editingPatientData, setEditingPatientData ] = useState({});
 
   const addPatientInDatabase = (patientData) => {
     const { cpf } = patientData;
@@ -19,9 +24,26 @@ function App() {
     if (isCpfNotRegistered(cpf)) {
       addDataInLocalStorage(patientData);
       setIsFormVisible(false);
+      setPatients(getDataFromLocalStorage);
     } else {
       alert('Este paciente já foi cadastrado');
     }
+  };
+
+  const editPatientInDatabase = (patientData) => {
+    const { cpf } = patientData;
+
+    editDataInLocalStorage(cpf, patientData);
+
+    setIsFormVisible(false);
+    setIsInEditMode(false);
+    setPatients(getDataFromLocalStorage);
+  };
+
+  const handleEnterEditMode = (patientToEdit) => {
+    setIsInEditMode(true);
+    setIsFormVisible(true);
+    setEditingPatientData(patientToEdit);
   };
 
   useEffect(() => {
@@ -48,7 +70,11 @@ function App() {
 
         <button
           className='add_patient'
-          onClick={() => setIsFormVisible(true)}
+          onClick={() => {
+            setIsFormVisible(true)
+            setEditingPatientData({});
+            setIsInEditMode(false);
+          }}
         >
           Cadastrar novo paciente
         </button>
@@ -57,8 +83,13 @@ function App() {
       { isFormVisible && 
         <Overlayer>
           <Form
-            handleSubmit={addPatientInDatabase}
+            handleSubmit={ isInEditMode
+              ? editPatientInDatabase
+              : addPatientInDatabase
+            }
             setIsFormVisible={setIsFormVisible}
+            isInEditMode={isInEditMode}
+            previousPatientData={editingPatientData}
           />
         </Overlayer>
       }
@@ -66,6 +97,7 @@ function App() {
       <Table
         patients={patients}
         filter={filter}
+        handleEdit={handleEnterEditMode}
       />
     </div>
   );
