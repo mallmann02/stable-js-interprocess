@@ -21,6 +21,9 @@ const editDataInLocalStorage = (patientCredential, newInfo) => {
     const patientIndex = storedPatients.indexOf(patientToEdit);
 
     storedPatients[patientIndex] = { ...newInfo };
+
+    const stringfiedLoad = JSON.stringify(storedPatients);
+    localStorage.setItem('patients', stringfiedLoad);
 };
 
 export { getDataFromLocalStorage, addDataInLocalStorage, editDataInLocalStorage };
