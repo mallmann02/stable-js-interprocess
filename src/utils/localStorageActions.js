@@ -26,4 +26,22 @@ const editDataInLocalStorage = (patientCredential, newInfo) => {
     localStorage.setItem('patients', stringfiedLoad);
 };
 
-export { getDataFromLocalStorage, addDataInLocalStorage, editDataInLocalStorage };
+const changePatientStatusInLocalStorage = (patientCredential, newStatus) => {
+    const storedPatients = getDataFromLocalStorage();
+    
+    const patientToEdit = storedPatients.find(({ cpf }) => cpf == patientCredential);
+
+    const patientIndex = storedPatients.indexOf(patientToEdit);
+
+    storedPatients[patientIndex] = { ...patientToEdit, status: newStatus };
+
+    const stringfiedLoad = JSON.stringify(storedPatients);
+    localStorage.setItem('patients', stringfiedLoad);
+};
+
+export {
+    getDataFromLocalStorage,
+    addDataInLocalStorage,
+    editDataInLocalStorage,
+    changePatientStatusInLocalStorage
+};

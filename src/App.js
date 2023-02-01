@@ -7,7 +7,8 @@ import Table from './components/Table';
 import {
   getDataFromLocalStorage,
   addDataInLocalStorage,
-  editDataInLocalStorage
+  editDataInLocalStorage,
+  changePatientStatusInLocalStorage
 } from './utils/localStorageActions';
 import { isCpfNotRegistered } from './utils/userRegisterDataValidation';
 
@@ -45,6 +46,11 @@ function App() {
     setIsFormVisible(true);
     setEditingPatientData(patientToEdit);
   };
+
+  const handleChangePatientStatusInLocalStorage = (patientCredential, newStatus) => {
+    changePatientStatusInLocalStorage(patientCredential, newStatus);
+    setPatients(getDataFromLocalStorage);
+  }
 
   useEffect(() => {
     setPatients(getDataFromLocalStorage);
@@ -98,6 +104,7 @@ function App() {
         patients={patients}
         filter={filter}
         handleEdit={handleEnterEditMode}
+        handleChangePatientStatus={handleChangePatientStatusInLocalStorage}
       />
     </div>
   );
