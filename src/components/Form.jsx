@@ -89,6 +89,7 @@ function Form (props) {
 				placeholderText="Ativo/inativo"
 				type="select"
 				options={['Ativo', 'Inativo']}
+				disabled={isInEditMode}
 			/>
 			<LabeledInput
 				inputValue={bornDate}

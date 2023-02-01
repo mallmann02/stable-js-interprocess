@@ -14,7 +14,8 @@ function LabeledInput (props) {
         required=true,
         minLength=1,
         type="input",
-        options
+        options,
+        disabled
     } = props;
 
     return (
@@ -35,6 +36,7 @@ function LabeledInput (props) {
                         required
                         className="main_form_select"
                         onChange={(e) => onChangeFn(e.target.value)}
+                        disabled={disabled}
                     >
                         {options.map((option, index) => (
                             <option key={index} value={option}>
