@@ -7,3 +7,9 @@ input.main_form_input::placeholder {
     color: #000000;
     font-family: 'Poppins';
 }
+
+select.main_form_select {
+    background-color: #ccaee7;
+    border: none;
+    border-radius: 0px;
+}
