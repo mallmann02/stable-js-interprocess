@@ -24,3 +24,15 @@ table tbody td , th {
     text-align: center;
     vertical-align: inherit;
 }
+
+button.edit_btn_table {
+    background-color: rgb(102, 102, 120);
+    height: 30px;
+    padding: 0px 15px;
+    border: none;
+    border-radius: 2px;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    align-self: center;
+}
