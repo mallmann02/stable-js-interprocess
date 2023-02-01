@@ -1,9 +1,24 @@
 import { useEffect, useState } from 'react';
-import { getDataFromLocalStorage } from './utils/localStorageActions';
+import Form from './components/Form';
+import {
+  getDataFromLocalStorage,
+  addDataInLocalStorage
+} from './utils/localStorageActions';
+import { isCpfNotRegistered } from './utils/userRegisterDataValidation';
 
 function App() {
   const [ filter, setFilter ] = useState([]);
   const [ patients, setPatients ] = useState([]);
+
+  const addPatientInDatabase = (patientData) => {
+    const { cpf } = patientData;
+
+    if (isCpfNotRegistered(cpf)) {
+      addDataInLocalStorage(patientData);
+    } else {
+      alert('Este paciente já foi cadastrado');
+    }
+  };
 
   useEffect(() => {
     setPatients(getDataFromLocalStorage);
@@ -24,7 +39,9 @@ function App() {
           placeholder="Pesquise pelo nome aqui"
         />
       </label>
-      
+      <Form
+        handleSubmit={addPatientInDatabase}
+      />
     </div>
   );
 }
