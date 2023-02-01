@@ -7,8 +7,10 @@ function LabeledInput (props) {
         onChangeFn,
         labelText,
         placeholderText,
-        inputType,
-        maxLength
+        inputType="text",
+        maxLength,
+        required=true,
+        minLength=1
     } = props;
 
     return (
@@ -20,6 +22,8 @@ function LabeledInput (props) {
                 onChange={(e) => onChangeFn(e.target.value)}
                 type={inputType}
                 maxLength={ maxLength || 999 }
+                required={required}
+                minLength={minLength}
             >
             </input>
         </label>
