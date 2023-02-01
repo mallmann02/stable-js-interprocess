@@ -1,5 +1,8 @@
 const getDataFromLocalStorage = () => {
     const patients = JSON.parse(localStorage.getItem('patients'));
+    
+    if (!patients) return [];
+
     return patients;
 };
 
