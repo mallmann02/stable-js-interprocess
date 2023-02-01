@@ -30,12 +30,13 @@ table tbody td , th {
 }
 
 button.edit_btn_table {
-    background-color: rgb(102, 102, 120);
+    background-color: #ffffff;
+    color: #5e3c7e;
     height: 30px;
+    font-weight: bold;
     padding: 0px 15px;
     border: none;
     border-radius: 2px;
-    color: white;
     font-size: 16px;
     cursor: pointer;
     align-self: center;
