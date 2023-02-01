@@ -1,0 +1,9 @@
+input.main_form_input {
+    background-color: #ccaee7;
+    color: #000000;
+}
+
+input.main_form_input::placeholder {
+    color: #000000;
+    font-family: 'Poppins';
+}

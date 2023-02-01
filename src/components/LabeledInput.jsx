@@ -1,5 +1,7 @@
 import React from "react";
 
+import '../styles/LabeledInput.css'
+
 function LabeledInput (props) {
 
     const {
@@ -17,6 +19,7 @@ function LabeledInput (props) {
         <label>
             { labelText }
             <input
+                className="main_form_input"
                 placeholder={placeholderText}
                 value={inputValue}
                 onChange={(e) => onChangeFn(e.target.value)}

@@ -1,7 +1,7 @@
 form {
     display: flex;
     flex-direction: column;
-    background-color: rgb(245, 255, 255);
+    background-color: #f7f8f1;
     padding: 20px;
     z-index: 3;
     width: 30vw;
@@ -9,7 +9,8 @@ form {
 }
 
 button[type='submit'], button[type='button'] {
-    background-color: rgb(102, 102, 120);
+    background-color: #5e3c7e;
+    font-family: 'Poppins';
     width: 30%;
     height: 30px;
     border: none;
@@ -23,4 +24,8 @@ button[type='submit'], button[type='button'] {
 div.button_block {
     display: flex;
     justify-content: space-evenly;
+}
+
+form h2 {
+    color: #5e3c7e;
 }
