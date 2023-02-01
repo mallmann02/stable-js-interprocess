@@ -4,9 +4,9 @@ import '../styles/Overlayer.css';
 
 function Overlayer(props) {
   return (
-  	<div>
-			{ props.children }
-		</div>
+  	<div className="overlay">
+		{ props.children }
+	</div>
 	);
 }
 
