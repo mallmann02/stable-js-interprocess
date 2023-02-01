@@ -5,19 +5,29 @@ import '../styles/Form.css';
 
 function Form (props) {
 
-	const { handleSubmit } = props;
+	const { handleSubmit, setIsFormVisible } = props;
 	
 	const [name, setName] = useState("");
 	const [cpf, setCpf] = useState("");
 	const [gender, setGender] = useState("");
 	const [address, setAddress] = useState("");
 	const [status, setStatus] = useState("");
+	const [bornDate, setBornDate] = useState("");
 
 	return (
 		<form
 			onSubmit={(e) => {
 				e.preventDefault();
-				handleSubmit({ name, cpf, gender, address, status });
+				handleSubmit({
+					name,
+					cpf,
+					gender,
+					address,
+					status,
+					bornDate,
+					created: Date.now(),
+					edited: Date.now()
+				});
 			}}
 		>
 			<h2> Formulário de cadastro </h2>
@@ -57,11 +67,26 @@ function Form (props) {
 				placeholderText="Ativo/inativo"
 				inputType="text"
 			/>
-			<button
-				type='submit'
-			>
-				Cadastrar
-			</button>
+			<LabeledInput
+				inputValue={bornDate}
+				onChangeFn={setBornDate}
+				labelText="Data de nascimento"
+				placeholderText="02/12/1998"
+				inputType="date"
+			/>
+			<div className='button_block'>
+				<button
+					type='button'
+					onClick={() => setIsFormVisible(false)}
+				>
+					Cancelar
+				</button>
+				<button
+					type='submit'
+				>
+					Cadastrar
+				</button>
+			</div>
 		</form>
 	);
 };
