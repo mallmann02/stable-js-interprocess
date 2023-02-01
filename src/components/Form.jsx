@@ -72,6 +72,8 @@ function Form (props) {
 				onChangeFn={setGender}
 				labelText="Sexo"
 				placeholderText="Masculino/Feminino"
+				type="select"
+				options={['Masculino', 'Feminino']}
 			/>
 			<LabeledInput
 				inputValue={address}
@@ -85,6 +87,8 @@ function Form (props) {
 				onChangeFn={setStatus}
 				labelText="Status"
 				placeholderText="Ativo/inativo"
+				type="select"
+				options={['Ativo', 'Inativo']}
 			/>
 			<LabeledInput
 				inputValue={bornDate}

@@ -12,23 +12,37 @@ function LabeledInput (props) {
         inputType="text",
         maxLength,
         required=true,
-        minLength=1
+        minLength=1,
+        type="input",
+        options
     } = props;
 
     return (
         <label>
             { labelText }
-            <input
-                className="main_form_input"
-                placeholder={placeholderText}
-                value={inputValue}
-                onChange={(e) => onChangeFn(e.target.value)}
-                type={inputType}
-                maxLength={ maxLength || 999 }
-                required={required}
-                minLength={minLength}
-            >
-            </input>
+            { type == "input"
+                ? ( <input
+                        className="main_form_input"
+                        placeholder={placeholderText}
+                        value={inputValue}
+                        onChange={(e) => onChangeFn(e.target.value)}
+                        type={inputType}
+                        maxLength={ maxLength || 999 }
+                        required={required}
+                        minLength={minLength}
+                    /> )
+                : ( <select
+                        required
+                        className="main_form_select"
+                        onChange={(e) => onChangeFn(e.target.value)}
+                    >
+                        {options.map((option, index) => (
+                            <option key={index} value={option}>
+                                {option}
+                            </option>
+                        ))}
+                    </select>)
+            }
         </label>
     );
 }
