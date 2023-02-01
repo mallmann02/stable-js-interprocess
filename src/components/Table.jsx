@@ -31,7 +31,7 @@ function Table(props) {
             <td>{patient.created}</td>
             <td>{patient.edited}</td>
             <td>{patient.name}</td>
-            <td>{patient.born_date}</td>
+            <td>{patient.bornDate}</td>
             <td>{patient.cpf}</td>
             <td>{patient.gender}</td>
             <td>{patient.address || "Não informado"}</td>
