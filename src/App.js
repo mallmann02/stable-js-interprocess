@@ -1,5 +1,7 @@
 import { useEffect, useState } from 'react';
 import Form from './components/Form';
+import Overlayer from './components/Overlayer';
+import Table from './components/Table';
 import {
   getDataFromLocalStorage,
   addDataInLocalStorage
@@ -9,12 +11,14 @@ import { isCpfNotRegistered } from './utils/userRegisterDataValidation';
 function App() {
   const [ filter, setFilter ] = useState([]);
   const [ patients, setPatients ] = useState([]);
+  const [ isFormVisible, setIsFormVisible ] = useState(false);
 
   const addPatientInDatabase = (patientData) => {
     const { cpf } = patientData;
 
     if (isCpfNotRegistered(cpf)) {
       addDataInLocalStorage(patientData);
+      setIsFormVisible(false);
     } else {
       alert('Este paciente já foi cadastrado');
     }
@@ -33,14 +37,32 @@ function App() {
       <label>
         Filtro
         <input
-          type="text"
+          type="search"
           value={filter}
           onChange={(e) => setFilter(e.target.value)}
           placeholder="Pesquise pelo nome aqui"
         />
       </label>
-      <Form
-        handleSubmit={addPatientInDatabase}
+
+      <button
+        className='add_patient'
+        onClick={() => setIsFormVisible(true)}
+      >
+        Cadastrar novo paciente
+      </button>
+
+      { isFormVisible && 
+        <Overlayer>
+          <Form
+            handleSubmit={addPatientInDatabase}
+            setIsFormVisible={setIsFormVisible}
+          />
+        </Overlayer>
+      }
+
+      <Table
+        patients={patients}
+        filter={filter}
       />
     </div>
   );
