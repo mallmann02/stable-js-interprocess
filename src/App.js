@@ -30,26 +30,29 @@ function App() {
 
   return (
     <div className="App">
-      <div>
-        <h1> Clínica ACME </h1>
-        <h3> Página de cadastro e pesquisa de pacientes </h3>
-      </div>
-      <label>
-        Filtro
-        <input
-          type="search"
-          value={filter}
-          onChange={(e) => setFilter(e.target.value)}
-          placeholder="Pesquise pelo nome aqui"
-        />
-      </label>
+      <div className='header'>
+        <div>
+          <h1> Clínica ACME </h1>
+          <h3> Página de cadastro e pesquisa de pacientes </h3>
+        </div>
 
-      <button
-        className='add_patient'
-        onClick={() => setIsFormVisible(true)}
-      >
-        Cadastrar novo paciente
-      </button>
+        <label className='filter_input'>
+          Filtro
+          <input
+            type="search"
+            value={filter}
+            onChange={(e) => setFilter(e.target.value)}
+            placeholder="Pesquise pelo nome aqui"
+          />
+        </label>
+
+        <button
+          className='add_patient'
+          onClick={() => setIsFormVisible(true)}
+        >
+          Cadastrar novo paciente
+        </button>
+      </div>
 
       { isFormVisible && 
         <Overlayer>
