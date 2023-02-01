@@ -1,0 +1,26 @@
+table {
+    background: rgb(49, 48, 75);
+    color: white;
+    display: table;
+    margin-top: 50px;
+    width: 100vw;
+}
+
+table tbody {
+    border-color: inherit;
+    display: table-row-group;
+    vertical-align: middle;
+}
+
+table tbody tr {
+    border-color: inherit;
+    display: table-row;
+    vertical-align: inherit;
+}
+
+table tbody td , th {
+    display: table-cell;
+    padding: 5px 0;
+    text-align: center;
+    vertical-align: inherit;
+}
