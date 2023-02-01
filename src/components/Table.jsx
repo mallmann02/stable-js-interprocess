@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 
+import '../styles/Table.css';
+
 function Table(props) {
 
   const { patients, filter } = props;
@@ -7,7 +9,7 @@ function Table(props) {
   const [ filteredPatients, setFilteredPatients ] = useState([]);
 
   useEffect(() => {
-    const filtered = applyFilterOnPatients(filter, patients);
+    const filtered = patients.filter(({name}) => name.includes(filter));
     setFilteredPatients(filtered);
   }, [filter, patients]);
 
