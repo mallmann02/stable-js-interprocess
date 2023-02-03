@@ -15,7 +15,8 @@ function LabeledInput (props) {
         minLength=1,
         type="input",
         options,
-        disabled
+        disabled,
+        classNameSufix
     } = props;
 
     return (
@@ -23,7 +24,7 @@ function LabeledInput (props) {
             { labelText }
             { type == "input"
                 ? ( <input
-                        className="main_form_input"
+                        className={`main-form__input ${classNameSufix}`}
                         placeholder={placeholderText}
                         value={inputValue}
                         onChange={(e) => onChangeFn(e.target.value)}
@@ -34,7 +35,7 @@ function LabeledInput (props) {
                     /> )
                 : ( <select
                         required
-                        className="main_form_select"
+                        className={`main-form__select ${classNameSufix}`}
                         onChange={(e) => onChangeFn(e.target.value)}
                         disabled={disabled}
                     >

@@ -38,6 +38,7 @@ function Form (props) {
 
 	return (
 		<form
+			className='patients-register__form'
 			onSubmit={(e) => {
 				e.preventDefault();
 				handleSubmit({
@@ -58,6 +59,7 @@ function Form (props) {
 				onChangeFn={setName}
 				labelText="Nome"
 				placeholderText="ex: Fulano da Silva"
+				classNameSufix='name'
 			/>
 			<LabeledInput
 				inputValue={cpf}
@@ -66,6 +68,7 @@ function Form (props) {
 				placeholderText="Digite o CPF com 11 dígitos"
 				maxLength={11}
 				minLength={11}
+				classNameSufix='cpf'
 			/>
 			<LabeledInput
 				inputValue={gender}
@@ -74,6 +77,7 @@ function Form (props) {
 				placeholderText="Masculino/Feminino"
 				type="select"
 				options={['Masculino', 'Feminino']}
+				classNameSufix='gender'
 			/>
 			<LabeledInput
 				inputValue={address}
@@ -81,6 +85,7 @@ function Form (props) {
 				labelText="Endereço"
 				placeholderText="ex: Rua Fulano da Silva, 598, São Paulo/SP"
 				required={false}
+				classNameSufix='address'
 			/>
 			<LabeledInput
 				inputValue={status}
@@ -90,6 +95,7 @@ function Form (props) {
 				type="select"
 				options={['Ativo', 'Inativo']}
 				disabled={isInEditMode}
+				classNameSufix='status'
 			/>
 			<LabeledInput
 				inputValue={bornDate}
@@ -97,15 +103,18 @@ function Form (props) {
 				labelText="Data de nascimento"
 				placeholderText="ex: 02/12/1998"
 				inputType="date"
+				classNameSufix='bornDate'
 			/>
 			<div className='button_block'>
 				<button
+					className='main-form__btn cancel'
 					type='button'
 					onClick={() => setIsFormVisible(false)}
 				>
 					Cancelar
 				</button>
 				<button
+					className='main-form__btn register'
 					type='submit'
 				>
 					{ isInEditMode ? "Atualizar" : "Cadastrar" }
