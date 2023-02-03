@@ -38,6 +38,10 @@ function LabeledInput (props) {
                         onChange={(e) => onChangeFn(e.target.value)}
                         disabled={disabled}
                     >
+                        <option value="" selected disabled hidden>
+                            {`Selecione o ${labelText.toLowerCase()} do paciente`}
+                        </option>
+
                         {options.map((option, index) => (
                             <option key={index} value={option}>
                                 {option}
