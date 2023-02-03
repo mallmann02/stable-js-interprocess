@@ -14,7 +14,7 @@ function Table(props) {
   const [ filteredPatients, setFilteredPatients ] = useState([]);
 
   useEffect(() => {
-    const filtered = patients.filter(({name}) => name.includes(filter));
+    const filtered = patients.filter(({name}) => name?.includes(filter));
     setFilteredPatients(filtered);
   }, [filter, patients]);
 
